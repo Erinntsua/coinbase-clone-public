@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; }
+  input, button { font-family: inherit; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cb-blue text-white font-semibold px-5 py-2.5 rounded-full hover:bg-blue-700 transition-colors duration-150 cursor-pointer border-0 text-sm;
+  }
+  .btn-secondary {
+    @apply bg-white text-cb-black font-semibold px-5 py-2.5 rounded-full border border-cb-gray6 hover:bg-cb-gray7 transition-colors duration-150 cursor-pointer text-sm;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-cb-black font-semibold px-4 py-2 rounded-full hover:bg-cb-gray7 transition-colors duration-150 cursor-pointer border-0 text-sm;
+  }
+  .card {
+    @apply bg-white border border-cb-gray6 rounded-2xl overflow-hidden;
+  }
+  .input-field {
+    @apply w-full px-3.5 py-2.5 border border-cb-gray6 rounded-lg text-sm text-cb-black placeholder-cb-gray3 focus:outline-none focus:border-cb-blue focus:ring-1 focus:ring-cb-blue transition-colors;
+  }
+}
+
+/* Ticker animation */
+.ticker-wrap { overflow: hidden; width: 100%; }
+.ticker-inner { display: inline-flex; animation: ticker 40s linear infinite; white-space: nowrap; }
+.ticker-inner:hover { animation-play-state: paused; }
