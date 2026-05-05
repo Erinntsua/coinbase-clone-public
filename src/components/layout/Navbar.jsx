@@ -184,8 +184,19 @@ const Navbar = () => {
             </button>
             {user ? (
               <>
-                <span className="text-sm text-gray-500 mx-2">Hi, <strong className="text-gray-900">{user.name}</strong></span>
-                <button onClick={() => { signOut(); nav('/') }} className="px-5 py-2 text-sm font-semibold border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">Sign out</button>
+                <button onClick={() => nav('/profile')}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-gray-100 transition-colors">
+                  <div className="w-7 h-7 rounded-full bg-[#0052FF] flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-white">
+                      {user.name ? user.name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2) : '?'}
+                    </span>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-900">{user.name?.split(' ')[0]}</span>
+                </button>
+                <button onClick={() => { signOut(); nav('/') }}
+                  className="px-5 py-2 text-sm font-semibold border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
+                  Sign out
+                </button>
               </>
             ) : (
               <>

@@ -7,15 +7,20 @@ import Home from './pages/Home'
 import Explore from './pages/Explore'
 import AssetDetail from './pages/AssetDetail'
 import Learn from './pages/Learn'
+import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 
-const ScrollTop = () => { const { pathname } = useLocation(); useEffect(() => window.scrollTo(0,0), [pathname]); return null }
+const ScrollTop = () => {
+  const { pathname } = useLocation()
+  useEffect(() => window.scrollTo(0, 0), [pathname])
+  return null
+}
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation()
-  // Sign in is fully standalone (dark bg, its own logo)
-  const standalone = pathname === '/signin'
+  // Standalone dark pages with their own header
+  const standalone = pathname === '/signin' || pathname === '/signup'
   return (
     <div className="flex flex-col min-h-screen">
       {!standalone && <Navbar />}
@@ -38,6 +43,7 @@ export default function App() {
                 <Route path="/explore"   element={<Explore />} />
                 <Route path="/asset/:id" element={<AssetDetail />} />
                 <Route path="/learn"     element={<Learn />} />
+                <Route path="/profile"   element={<Profile />} />
                 <Route path="/signin"    element={<SignIn />} />
                 <Route path="/signup"    element={<SignUp />} />
                 <Route path="*"          element={<Navigate to="/" replace />} />
